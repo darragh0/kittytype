@@ -3,7 +3,9 @@
 #include <ncurses.h>
 
 
-WINDOW *title;
+// TODO: Remove globals
+WINDOW* title;
+
 
 const char logo[LOGO_ROWS][LOGO_COLS + 1] = {
     "    __   _ __  __        __                 ",
@@ -28,7 +30,7 @@ void refresh_ui() {
     int rows, cols;
     getmaxyx(stdscr, rows, cols);
 
-    // Allow left margin to nullify
+    // Don't allow top margin to nullify
     if (rows < LOGO_ROWS + LOGO_TOP_MARGIN || cols < LOGO_COLS) {
         refresh();
         return;
