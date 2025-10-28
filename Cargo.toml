@@ -1,0 +1,31 @@
+[package]
+name = "kittytype"
+version = "0.1.0"
+authors = ["darragh0"]
+edition = "2024"
+description = "A customizable terminal typing game inspired by Monkeytype.com"
+readme = "README.md"
+license = "GPL-3.0-or-later"
+keywords = [
+  "monkeytype",
+  "kittytype",
+  "typing game",
+  "typing",
+  "type race",
+  "typer",
+  "type",
+  "tui",
+  "game",
+  "monkey",
+  "kitty",
+  "cat",
+]
+
+[dependencies]
+crossterm = "0.29.0"
+dirs = "6.0.0"
+figlet-rs = "0.1.5"
+ratatui = "0.29.0"
+serde = { version = "1.0.228", features = ["derive"] }
+serde_json = "1.0.145"
+strum = { version = "0.27.2", features = ["derive"] }
