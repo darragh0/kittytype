@@ -5,7 +5,7 @@ pub enum SettingsError {
     SerializationError(serde_json::Error),
     DeserializationError(serde_json::Error),
     EnumVariantError(strum::ParseError),
-    MissingWordsetFile(String),
+    MissingLanguageFile(String),
     MissingTitleFontFile(String),
 }
 
@@ -18,7 +18,7 @@ impl fmt::Display for SettingsError {
             Self::SerializationError(e) => write!(f, "JSON conversion error: {}", e),
             Self::DeserializationError(e) => write!(f, "JSON conversion error: {}", e),
             Self::EnumVariantError(e) => write!(f, "IO error: {}", e),
-            Self::MissingWordsetFile(file) => write!(f, "Missing wordset file: {}", file),
+            Self::MissingLanguageFile(file) => write!(f, "Missing language file: {}", file),
             Self::MissingTitleFontFile(file) => write!(f, "Missing title font file: {}", file),
         }
     }

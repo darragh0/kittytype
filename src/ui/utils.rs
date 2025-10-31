@@ -10,7 +10,3 @@ pub fn center_horizontal(area: Rect, horizontal: Constraint) -> Rect {
     area
 }
 
-pub fn center(area: Rect, horizontal: Constraint, vertical: Constraint) -> Rect {
-    let area = center_horizontal(area, horizontal);
-    center_vertical(area, vertical)
-}

@@ -7,14 +7,13 @@ use ratatui::{
 
 use crate::{
     settings::types::TitleFont,
-    ui::{UiError, center},
+    ui::{UiError, utils::center_vertical},
 };
 use figlet_rs::FIGfont;
 
 pub struct Title {
     paragraph: Paragraph<'static>,
     height: u16,
-    width: u16,
 }
 
 impl Title {
@@ -29,16 +28,15 @@ impl Title {
         let lines: Vec<Line> = fig_str.lines().map(|l| Line::from(l.to_owned())).collect();
 
         let height = fig.height as u16;
-        let width = fig.characters.iter().map(|c| c.width).sum::<u32>() as u16;
-        let paragraph = Paragraph::new(lines);
+        let paragraph = Paragraph::new(lines).centered();
 
-        Ok(Self { paragraph, height, width })
+        Ok(Self { paragraph, height })
     }
 }
 
 impl Widget for Title {
     fn render(self, area: Rect, buf: &mut Buffer) {
-        let area = center(area, Constraint::Length(self.width), Constraint::Length(self.height));
+        let area = center_vertical(area, Constraint::Length(self.height));
         self.paragraph.render(area, buf);
     }
 }

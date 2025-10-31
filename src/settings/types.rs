@@ -11,7 +11,7 @@ settings_enum! {
 }
 
 settings_enum! {
-    pub enum TypingSound { #[default] None, Click }
+    pub enum SoundOnClick { #[default] None, Click }
 }
 
 settings_enum! {
@@ -48,7 +48,7 @@ impl TitleFont {
 }
 
 settings_enum! {
-    pub enum Wordset {
+    pub enum Language {
         CodeBash,
         CodeC,
         CodeCpp,
@@ -88,13 +88,13 @@ settings_enum! {
     }
 }
 
-impl Wordset {
+impl Language {
     pub fn file(&self) -> String {
-        format!("./assets/wordsets/{}.json", self.as_ref())
+        format!("./assets/languages/{}.json", self.as_ref())
     }
 
     pub fn ensure_file_exists(&self) -> SettingsResult<()> {
         let file = self.file();
-        if fs::metadata(&file).is_err() { Err(SE::MissingWordsetFile(file)) } else { Ok(()) }
+        if fs::metadata(&file).is_err() { Err(SE::MissingLanguageFile(file)) } else { Ok(()) }
     }
 }
